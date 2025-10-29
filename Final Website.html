@@ -1,0 +1,352 @@
+<!doctype html>
+
+<html lang="en">  
+<head>  
+  <meta charset="utf-8" />  
+  <meta name="viewport" content="width=device-width,initial-scale=1" />  
+  <title>Tano.tech Website</title>  
+  <meta name="description" content="Template website responsif sederhana: hero, layanan, portofolio, kontak." />  
+  <style>  
+    *{box-sizing:border-box;margin:0;padding:0}  
+    html,body{  
+      height:auto;  
+      overflow-y:auto;  
+      overflow-x:hidden;  
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;  
+      background: linear-gradient(135deg, #7c3aed, #06b6d4); /* Ungu ke cyan */  
+      position: relative;  
+    }  /* === Efek bintang bergerak === */  
+#stars-container {  
+  position: fixed;  
+  top: 0;  
+  left: 0;  
+  width: 100%;  
+  height: 100%;  
+  overflow: hidden;  
+  z-index: 0; /* agar tidak hilang */  
+  pointer-events: none;  
+}  
+
+.star {  
+  position: absolute;  
+  border-radius: 50%;  
+  background: white;  
+  opacity: 0.8;  
+  animation: moveStars linear infinite;  
+}  
+
+@keyframes moveStars {  
+  from {  
+    transform: translateY(0) translateX(0);  
+    opacity: 1;  
+  }  
+  to {  
+    transform: translateY(100vh) translateX(calc(50vw - 50%));  
+    opacity: 0;  
+  }  
+}  
+
+/* === Pastikan semua konten di atas bintang === */  
+.container, header, main, footer {  
+  position: relative;  
+  z-index: 1;  
+}  
+
+:root{  
+  --bg:#0f172a;  
+  --card:#0b1220;  
+  --muted:#94a3b8;  
+  --accent:#7c3aed;  
+  --glass: rgba(255,255,255,0.04);  
+}  
+
+header{backdrop-filter: blur(6px);background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));border-radius:14px;padding:12px;margin-bottom:22px}  
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px}  
+.brand{display:flex;align-items:center;gap:12px}  
+@keyframes glowChange {
+  0% { box-shadow: 0 0 20px 5px rgba(0, 255, 100, 0.7); }
+  50% { box-shadow: 0 0 30px 10px rgba(0, 200, 255, 0.8); }
+  100% { box-shadow: 0 0 20px 5px rgba(0, 255, 100, 0.7); }
+}
+
+.logo {
+  width: 200px;
+  height: 120px;
+  background-image: url('https://files.catbox.moe/nszqlf.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 25px;
+  animation: glowChange 3s infinite alternate;
+  margin: 30px auto;
+}
+nav ul{display:flex;gap:14px;list-style:none}  
+nav a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px}  
+nav a:hover{color:#fff;background:var(--glass)}  
+/* Tombol CTA utama */
+/* Tombol CTA dengan background gradasi */
+.cta {
+  position: relative;
+  display: inline-block;
+background:linear-gradient(90deg,var(--accent),cyan);padding:8px 14px;border-radius:10px;color:#051328;text-decoration:none;font-weight:600
+  color: cyan;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.25);
+  overflow: visible;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+/* Efek lingkaran bercahaya di luar border */
+.cta::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border-radius: 16px;
+  border: 2px dotted rgba(0, 255, 255, 0.8);
+  box-shadow: 0 0 10px cyan, 0 0 25px rgba(0,255,255,0.4);
+  animation: ctaGlow 3s infinite ease-in-out;
+  z-index: -1;
+}
+/* Tambahkan jarak bawah pada tombol Developer Forum */
+.cta:first-of-type {
+  display: inline-block;
+  margin-bottom: 15px; /* ubah nilai ini kalau mau lebih jauh */
+}
+
+/* Animasi glow lembut */
+@keyframes ctaGlow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* Efek hover */
+.hero{display:grid;grid-template-columns:1fr 420px;gap:26px;align-items:center;margin:24px 0}  
+.hero .left h1{font-size:clamp(28px,4vw,44px);margin-bottom:10px;color:cyan}  
+.lead{color:#94a3b8;margin-bottom:18px}  
+.actions{display:flex;gap:12px;flex-wrap:wrap}  
+.btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:600;color:cyan}  
+.btn-outline{border:1px solid rgba(255,255,255,0.06);color:cyan;background:transparent}  
+.btn-youtube{border:1px solid rgba(255,255,255,0.06);color:#fff;background:transparent;color:cyan}  
+.btn-youtube:hover{background:transparent}  
+
+.card{background:rgba(255,255,255,0.1);padding:18px;border-radius:14px;color:cyan}  
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0}  
+.service{padding:18px;border-radius:12px;background:rgba(0,0,0,0.3)}  
+.service h3{margin-bottom:8px}  
+.service p{color:white;font-size:14px}  
+
+.portfolio{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}  
+.port-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  width: 100%;
+  padding: 20px;
+  border-radius: 20px;
+  border: 2px solid rgba(0, 255, 255, 0.4);
+  background: rgba(0, 10, 20, 0.8);
+  color: cyan;
+  font-weight: bold;
+  transition: 0.3s ease;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+}
+
+/* Cahaya lembut tanpa blur berat */
+.port-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(0,255,255,0.3), rgba(0,0,0,0));
+  opacity: 0.6;
+  animation: glowSoft 5s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+/* Animasi pelan, ringan */
+@keyframes glowSoft {
+  0% { opacity: 0.4; box-shadow: 0 0 15px rgba(0,255,255,0.3); }
+  100% { opacity: 0.8; box-shadow: 0 0 25px rgba(0,255,255,0.5); }
+}
+
+.port-item > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hover sedikit nyala */
+.port-item:hover {
+  box-shadow: 0 0 25px rgba(0,255,255,0.6);
+  transform: scale(1.02);
+}
+.pill{background:rgba(255,255,255,0.06);padding:6px 8px;border-radius:999px;font-size:12px}  
+
+.portfolio-gallery{  
+  display:grid;  
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));  
+  gap:14px;  
+  margin-top:22px;  
+}  
+.portfolio-gallery a{  
+  display:block;  
+  border-radius:12px;  
+  overflow:hidden;  
+  position:relative;  
+  transition:transform .3s ease, box-shadow .3s ease;  
+}  
+.portfolio-gallery a:hover{  
+  transform:scale(1.03);  
+  box-shadow:0 6px 18px rgba(0,0,0,0.4);  
+}  
+.portfolio-gallery img{  
+  width:100%;  
+  height:150px;  
+  object-fit:cover;  
+  display:block;  
+}  
+.portfolio-gallery span{  
+  position:absolute;  
+  bottom:8px;  
+  left:8px;  
+  background:rgba(0,0,0,0.6);  
+  color:#fff;  
+  font-size:13px;  
+  padding:4px 8px;  
+  border-radius:6px;  
+}  
+
+form{display:grid;gap:12px}  
+input,textarea,button{padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#e6eef8}  
+textarea{min-height:120px;resize:vertical}  
+.split{display:grid;grid-template-columns:1fr 1fr;gap:12px}  
+footer{margin-top:36px;color:var(--muted);font-size:14px;padding:18px;text-align:center}  
+
+@media (max-width:980px){  
+  .hero{grid-template-columns:1fr}  
+  .grid,.portfolio{grid-template-columns:repeat(2,1fr)}  
+  .split{grid-template-columns:1fr}  
+}  
+@media (max-width:560px){  
+  nav ul{display:none}  
+  .grid,.portfolio{grid-template-columns:1fr}  
+  .container{padding:16px}  
+}  
+.year{
+
+display: flex;
+justify-content: center; /* tengah horizontal /
+align-items: 600;     / tengah vertikal /
+height: 10vh;           / tinggi penuh layar */
+background:linear-gradient(90deg,var(--accent),purple);padding:20px 14px;border-radius:50px;color:#0298;text-decoration:none;font-weight:200}
+</style>
+
+</head>  
+<body>  
+  <!-- Efek bintang -->  
+  <div id="stars-container"></div>    <!-- Konten kamu -->    <div class="container">  
+     <header>  
+      <div class="nav">  
+        <div class="brand">  
+          <div class="logo"></div>  
+          <div>  
+            <div class="cta">Welcome To Website Tano.XH
+            Scrool Website!!</div>  
+          </div>  
+        </div>  
+        <nav>  
+          <ul>  
+            <li><a href="#">Home</a></li>  
+            <li><a href="#services">Layanan</a></li>  
+            <li><a href="#portfolio">Portofolio</a></li>  
+            <li><a href="#contact">Kontak</a></li>  
+          </ul>  
+        </nav>  
+      </div>  
+    </header>  <main>  
+  <section class="hero">  
+    <div class="left">  
+      <h1>𝑾𝒉𝒂𝒕 𝑫𝒐 𝒀𝒐𝒖 𝑵𝒆𝒆𝒅 𝑰𝒏 𝑾𝒆𝒃𝒔𝒊𝒕𝒆 𝑻𝒂𝒏𝒐.𝑿𝑯</h1>  
+      <p class="lead">  
+      This Widget is still in beta, so please contact the developer if you have any feedback.</p>
+      <a class="cta" href="https://tano-tech.vercel.app/">Developer Forum </a>  
+      <div class="actions">  
+        <a class="cta" href="#services">View Our Services Tano.XH!!!!</a>  
+        <a class="cta" href="#portfolio">Procedure Store Tano.XH</a>  
+        <a class="cta" href="https://youtube.com/@unknown15-no?si=5wNdpnpRdJ34-ENy" target="_blank">Youtube Devoloper</a>  
+      </div>  
+    </div>  
+
+    <aside class="card">  
+      <h3>𝐒𝐮𝐦𝐦𝐚𝐫𝐲 𝐅𝐫𝐨𝐦 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫𝐫</h3>  
+      <p style="color:white">#ALLFAKE<br>If you are using the name Tano.XH Team, don't trust it because the original one has an official website.</p>  
+    </aside>  
+  </section>  
+
+  <section id="services">  
+    <h2 class="cta">𝑻𝒂𝒏𝒐 𝑺𝒆𝒓𝒗𝒊𝒄𝒆 𝑻𝒆𝒂𝒎 (𝑺𝒖𝒑𝒑𝒐𝒓𝒕)</h2>  
+    <div class="grid">  
+      <div class="service card"><h3>Scammer</h3><p>We will not provide an account if you are scammed, for example if someone claims to be from the Kan Tano team and you are deceived...we will not provide or compensate for the account.</p></div>  
+      <div class="service card"><h3>Banned Account</h3><p>Helps prevent your account from being compromised.</p></div>  
+      <div class="service card"><h3>Announcement</h3><p>If your account is banned, we will not compensate you with a new account.</p></div>  
+    </div>  
+  </section>  
+
+  <section id="portfolio">  
+    <h2 class="cta">𝑻𝒂𝒏𝒐.𝑿𝑯 𝑻𝒆𝒂𝒎 (𝑺𝒕𝒐𝒓𝒆)</h2>  
+    <div class="portfolio">  
+     <div class="port-item"><div><strong></strong><h4>RTHD Account</h4><div style="color:white;font-size:13px">The Store Doesn't Want to Accept Account Stock But Only Orders... If You Want to Wait for Account Creation, You Have to Be Patient...Contact Admin For Buy In Store Tano.XH Okay.....</div></div></div>  
+      <div class="port-item"><div><strong>Payment?</strong><div style="color:white;font-size:13px">For payments from foreigners, you can use PayPal, and for payments from Indonesians, you can use the Dana/Gopay wallet....If you want to make a transaction to the admin (Tano.XH)... Security is guaranteed to be tight</div></div></div>  
+      <div class="port-item"><div><strong>RTHD Script Creation</strong><div style="color:white;font-size:13px">If You Want to Buy RTHD Work Script?...To Contact Admin (Tano.XH) I Have Provided the Telegram Link And You Can Use This Script Permanently And Anti-Expiration</div></div></div>  
+ 
+    </div>  
+<h2 class="cta">𝑻𝒂𝒏𝒐 𝑻𝒆𝒂𝒎 (𝑳𝒊𝒏𝒌)</h2> 
+    <!-- === Bagian tambahan: gambar portofolio dengan link === -->  
+    <div class="portfolio-gallery">  
+      <a href="https://youtube.com/@unknown15-no?si=5wNdpnpRdJ34-ENy" target="_blank">  
+        <img src="https://imglink.io/i/43f05768-131a-4d7b-a3a7-6ae8815ec2f3.jpeg" alt="Project Tano.XH">  
+        <span>Project Tano.XH</span>  
+      </a>  
+      <a href="https://t.me/Tanov1" target="_blank">  
+        <img src="https://imglink.io/i/31936fb4-ca4c-4479-86ba-91c741cdbf1a.jpg" alt="Channel Telegram">  
+        <span>Chennel Telegram</span>  
+      </a>  
+      <a href="https://example.com/project2" target="_blank">  
+        <img src="https://imglink.io/i/fdef0402-6df3-4a3e-ab70-7ec63b72f47b.jpg" alt="Aplikasi Web">  
+        <span>Aplikasi Web</span>  
+      </a>  
+    </div>  
+
+    </div>  
+  </section>  
+</main>
+
+ <div class="year"><div><button href="">© Creator Website : Tano.XH</button></div>  
+  </div>    <script>  
+    // Bintang acak bergerak  
+    const starsContainer = document.getElementById("stars-container");  
+    const numStars = 500;  
+  
+    for (let i = 0; i < numStars; i++) {  
+      const star = document.createElement("div");  
+      star.classList.add("star");  
+      const size = Math.random() * 3 + 1;  
+      star.style.width = size + "px";  
+      star.style.height = size + "px";  
+      star.style.top = Math.random() * 100 + "%";  
+      star.style.left = Math.random() * 100 + "%";  
+      star.style.animationDuration = (Math.random() * 10 + 5) + "s";  
+      star.style.background = ["#a3e0ff", "#b693ff", "#80ffd9"][Math.floor(Math.random() * 3)];  
+      starsContainer.appendChild(star);  
+    }  
+  </script>  </body>  
+</html>
